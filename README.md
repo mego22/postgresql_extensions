@@ -1,2 +1,1 @@
-# postgresql_extensions
-Puppet definition to install Postgresql Extensions
+# Puppet define: Postgresql extensions
