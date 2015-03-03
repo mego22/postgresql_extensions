@@ -11,11 +11,12 @@
 define postgresql_extensions(
   $extension    = $name,
   $psql_command = '/usr/bin/psql',
-  $user         = 'postgres',
+  $psql_user         = 'postgres',
 ){
 
   exec { "Adding extension ${extension}.":
     command => "${psql_command} -d template1 -c 'CREATE EXTENSION \"${extension}\";'",
+    user    => "${psql_user}",
     unless  => "${psql_command} -d template1 -c '\\dx' | grep ${extension}",
   }
 
